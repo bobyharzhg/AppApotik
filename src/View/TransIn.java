@@ -5,6 +5,19 @@
  */
 package View;
 
+import Model.Connector;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author BobyZhg
@@ -14,6 +27,13 @@ public class TransIn extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    JasperReport JasRep;
+    JasperPrint JasPri;
+    Map param=new HashMap();
+    JasperDesign JasDes;
+    
+    
     public TransIn() {
         initComponents();
     }
@@ -27,9 +47,8 @@ public class TransIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        obat = new javax.swing.JComboBox<>();
+        member = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -43,22 +62,28 @@ public class TransIn extends javax.swing.JFrame {
         jml = new javax.swing.JTextField();
         tgl = new com.toedter.calendar.JDateChooser();
         kembali = new javax.swing.JButton();
+        obat = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-
-        jTextField1.setText("jTextField1");
+        jButton2 = new javax.swing.JButton();
+        bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 80));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel1.setText("Form Input Transaksi");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
-        obat.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        obat.addActionListener(new java.awt.event.ActionListener() {
+        member.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        member.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                obatActionPerformed(evt);
+                memberActionPerformed(evt);
             }
         });
+        getContentPane().add(member, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 103, -1));
 
         table.setFont(new java.awt.Font("Calibri", 1, 11)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -74,14 +99,19 @@ public class TransIn extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 537, 250));
+
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel2.setText("Nama obat : ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel3.setText("Jumlah jual : ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel4.setText("Tanggal jual : ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
         batal.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         batal.setText("Batal");
@@ -90,6 +120,7 @@ public class TransIn extends javax.swing.JFrame {
                 batalActionPerformed(evt);
             }
         });
+        getContentPane().add(batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 69, -1));
 
         simpan.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         simpan.setText("Simpan");
@@ -98,6 +129,7 @@ public class TransIn extends javax.swing.JFrame {
                 simpanActionPerformed(evt);
             }
         });
+        getContentPane().add(simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
 
         ubah.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         ubah.setText("Ubah");
@@ -106,6 +138,7 @@ public class TransIn extends javax.swing.JFrame {
                 ubahActionPerformed(evt);
             }
         });
+        getContentPane().add(ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 69, -1));
 
         delete.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         delete.setText("Hapus");
@@ -114,9 +147,17 @@ public class TransIn extends javax.swing.JFrame {
                 deleteActionPerformed(evt);
             }
         });
+        getContentPane().add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 69, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel5.setText("Data Transaksi");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
+
+        jml.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        getContentPane().add(jml, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 103, -1));
+
+        tgl.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        getContentPane().add(tgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 103, -1));
 
         kembali.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         kembali.setText("Kembali");
@@ -125,105 +166,48 @@ public class TransIn extends javax.swing.JFrame {
                 kembaliActionPerformed(evt);
             }
         });
+        getContentPane().add(kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 93, 30));
+
+        obat.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        obat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                obatActionPerformed(evt);
+            }
+        });
+        getContentPane().add(obat, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 103, -1));
+
+        jLabel7.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel7.setText("Member :");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
+
+        id.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 105, -1));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel6.setText("ID Transaksi :");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jml)
-                                    .addComponent(obat, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(batal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(delete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(simpan, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ubah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(kembali)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel6))
-                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel2)
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(obat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jml, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(batal)
-                                .addGap(11, 11, 11)
-                                .addComponent(simpan)
-                                .addGap(11, 11, 11)
-                                .addComponent(ubah)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(delete)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11))
-        );
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/print.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 50, -1));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/19366.jpg"))); // NOI18N
+        bg.setText("jLabel8");
+        bg.setMaximumSize(new java.awt.Dimension(726, 534));
+        bg.setMinimumSize(new java.awt.Dimension(726, 534));
+        bg.setPreferredSize(new java.awt.Dimension(726, 534));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void obatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obatActionPerformed
+    private void memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_obatActionPerformed
+    }//GEN-LAST:event_memberActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
         // TODO add your handling code here:
@@ -244,6 +228,28 @@ public class TransIn extends javax.swing.JFrame {
     private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kembaliActionPerformed
+
+    private void obatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_obatActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        try
+        {
+            java.sql.Connection conn=(Connection)Connector.configDB();
+            File file = new File("src\\reptransaksi.jrxml");
+            JasDes=JRXmlLoader.load(file);
+            param.clear();
+            JasRep=JasperCompileManager.compileReport(JasDes);
+            JasPri=JasperFillManager.fillReport(JasRep, param, conn);
+            JasperViewer.viewReport(JasPri, false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }     
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,18 +291,21 @@ public class TransIn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton batal;
+    private javax.swing.JLabel bg;
     public javax.swing.JButton delete;
     public javax.swing.JTextField id;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jml;
     public javax.swing.JButton kembali;
+    public javax.swing.JComboBox<String> member;
     public javax.swing.JComboBox<String> obat;
     public javax.swing.JButton simpan;
     public javax.swing.JTable table;

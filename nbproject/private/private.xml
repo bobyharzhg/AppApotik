@@ -5,6 +5,8 @@
         <group>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/View/TransIn.java</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Model/Connector.java</file>
+            <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/View/MemIn.java</file>
+            <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Model/Member.java</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Controller/trnController.java</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/View/ObatIn.java</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/View/Menu.java</file>
@@ -15,7 +17,9 @@
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Controller/obtController.java</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Controller/Controller.java</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/View/Login.java</file>
+            <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/View/print.png</file>
             <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Controller/lgController.java</file>
+            <file>file:/D:/Kuliah/semester%202/PBO/teori/NETBEAN/APPapotik/src/Controller/memController.java</file>
         </group>
     </open-files>
 </project-private>

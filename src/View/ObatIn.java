@@ -41,9 +41,14 @@ public class ObatIn extends javax.swing.JFrame {
         kembali = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         oid = new javax.swing.JTextField();
+        bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 80));
+        setPreferredSize(new java.awt.Dimension(730, 540));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        table.setFont(new java.awt.Font("Calibri", 1, 11)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -57,18 +62,25 @@ public class ObatIn extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 254, 375, 240));
+
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel1.setText("Form inputan obat");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 14, -1, -1));
 
-        obat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        obat.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        getContentPane().add(obat, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 99, 120, 34));
 
-        harga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        harga.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        getContentPane().add(harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 151, 120, 34));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel2.setText("Nama obat : ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 108, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel3.setText("Harga obat :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 160, -1, -1));
 
         delete.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         delete.setText("Hapus");
@@ -77,6 +89,7 @@ public class ObatIn extends javax.swing.JFrame {
                 deleteActionPerformed(evt);
             }
         });
+        getContentPane().add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 212, 69, -1));
 
         ubah.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         ubah.setText("Ubah");
@@ -85,6 +98,7 @@ public class ObatIn extends javax.swing.JFrame {
                 ubahActionPerformed(evt);
             }
         });
+        getContentPane().add(ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 212, 69, -1));
 
         simpan.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         simpan.setText("Simpan");
@@ -93,6 +107,7 @@ public class ObatIn extends javax.swing.JFrame {
                 simpanActionPerformed(evt);
             }
         });
+        getContentPane().add(simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 212, -1, -1));
 
         batal.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         batal.setText("Batal");
@@ -101,6 +116,7 @@ public class ObatIn extends javax.swing.JFrame {
                 batalActionPerformed(evt);
             }
         });
+        getContentPane().add(batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 212, 69, -1));
 
         kembali.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         kembali.setText("Kembali");
@@ -109,80 +125,19 @@ public class ObatIn extends javax.swing.JFrame {
                 kembaliActionPerformed(evt);
             }
         });
+        getContentPane().add(kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 93, 30));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel4.setText("ID obat : ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 56, -1, -1));
 
-        oid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        oid.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        getContentPane().add(oid, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 47, 120, 34));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(157, 157, 157))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(oid, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(obat, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(batal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(simpan)
-                        .addGap(18, 18, 18)
-                        .addComponent(ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(kembali))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oid, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(obat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(batal)
-                    .addComponent(simpan)
-                    .addComponent(ubah)
-                    .addComponent(delete))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/19366.jpg"))); // NOI18N
+        bg.setText("jLabel8");
+        bg.setPreferredSize(new java.awt.Dimension(55, 40));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,6 +202,7 @@ public class ObatIn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton batal;
+    private javax.swing.JLabel bg;
     public javax.swing.JButton delete;
     public javax.swing.JTextField harga;
     private javax.swing.JLabel jLabel1;

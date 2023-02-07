@@ -28,73 +28,79 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        dataObat = new javax.swing.JButton();
+        dataMember = new javax.swing.JButton();
         dataTransaksi = new javax.swing.JButton();
         keluar = new javax.swing.JButton();
+        dataObat = new javax.swing.JButton();
+        bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 80));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setText("Menu");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 127, -1, -1));
 
-        dataObat.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        dataObat.setText("Tabel Obat");
-        dataObat.addActionListener(new java.awt.event.ActionListener() {
+        dataMember.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        dataMember.setText("Tabel Member");
+        dataMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataObatActionPerformed(evt);
+                dataMemberActionPerformed(evt);
             }
         });
+        getContentPane().add(dataMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 178, 48));
 
-        dataTransaksi.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        dataTransaksi.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         dataTransaksi.setText("Tabel Transaksi");
+        dataTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataTransaksiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dataTransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 175, 178, 48));
 
-        keluar.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        keluar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         keluar.setText("Keluar");
         keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 keluarActionPerformed(evt);
             }
         });
+        getContentPane().add(keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 178, 48));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataObat, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataTransaksi)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(33, 33, 33)))
-                .addGap(137, 137, 137))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(dataTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dataObat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
+        dataObat.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        dataObat.setText("Tabel Obat");
+        dataObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataObatActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dataObat, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 241, 178, 48));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/19366.jpg"))); // NOI18N
+        bg.setText("jLabel8");
+        bg.setPreferredSize(new java.awt.Dimension(55, 40));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dataObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataObatActionPerformed
+    private void dataMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dataObatActionPerformed
+    }//GEN-LAST:event_dataMemberActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_keluarActionPerformed
+
+    private void dataTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataTransaksiActionPerformed
+        
+    }//GEN-LAST:event_dataTransaksiActionPerformed
+
+    private void dataObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataObatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataObatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +138,8 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg;
+    public javax.swing.JButton dataMember;
     public javax.swing.JButton dataObat;
     public javax.swing.JButton dataTransaksi;
     private javax.swing.JLabel jLabel1;

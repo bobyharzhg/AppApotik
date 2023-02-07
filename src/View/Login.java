@@ -32,9 +32,13 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
+        bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 80));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tamLogin.setBackground(new java.awt.Color(84, 163, 223));
         tamLogin.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         tamLogin.setText("Login");
         tamLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -42,47 +46,31 @@ public class Login extends javax.swing.JFrame {
                 tamLoginActionPerformed(evt);
             }
         });
+        getContentPane().add(tamLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 301, 197, 49));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel1.setText("Username : ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 184, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel2.setText("Password : ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 251, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(username)
-                            .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tamLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(tamLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        username.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 168, 197, 49));
+
+        password.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 235, 197, 48));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/19366.jpg"))); // NOI18N
+        bg.setText("jLabel8");
+        bg.setPreferredSize(new java.awt.Dimension(55, 40));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -90,6 +78,10 @@ public class Login extends javax.swing.JFrame {
     private void tamLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tamLoginActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +120,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JPasswordField password;

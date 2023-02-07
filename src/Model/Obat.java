@@ -34,9 +34,12 @@ public class Obat {
     }
 
     public boolean tambah() throws SQLException {
-        String sql = "insert into obat values (?,?,?)";
-                
         Connection con = (Connection)Connector.configDB();
+        String sq="alter table obat auto_increment=0";
+        java.sql.PreparedStatement pst=con.prepareStatement(sq);
+        pst.execute();
+        
+        String sql = "insert into obat values (?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, this.oid);
         ps.setString(2, this.obat);
